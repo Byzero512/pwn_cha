@@ -1,0 +1,1 @@
+gcc -static -masm=intel -g -o exp exp.c
